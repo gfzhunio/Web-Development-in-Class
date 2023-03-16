@@ -22,7 +22,7 @@ export function useSession() {
 
 export function login() {
     session.user = {
-        name: "John Doe",
+        name: "Gisela Fugon",
     }
 }
 
@@ -35,3 +35,4 @@ export function useLogout() {
 
         router.push("/login");
     }
+}
