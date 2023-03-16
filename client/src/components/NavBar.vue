@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { RouterLink } from 'vue-router';
+import { quantity } from '../model/cart';
+import Cart from './Cart.vue';
+import Flyout from './Flyout.vue';
 import LoginBadge from './LoginBadge.vue';
-
     const isMenuActive = ref(false);
-
+    const isCartActive = ref(false);
     function toggleMenu() {
         isMenuActive.value = !isMenuActive.value;
-        console.log({ isMenuActive});
+        console.log({ isMenuActive });
     }
 </script>
 
@@ -33,7 +35,6 @@ import LoginBadge from './LoginBadge.vue';
             <RouterLink to="/" class="navbar-item">Home</RouterLink>
             <RouterLink to="/about" class="navbar-item">About</RouterLink>
             <RouterLink to="/products" class="navbar-item">Products</RouterLink>
-
 
 
             <div class="navbar-item has-dropdown is-hoverable">
@@ -69,18 +70,15 @@ import LoginBadge from './LoginBadge.vue';
       
           <div class="navbar-end">
 
-            <LoginBadge />
-
             <div class="navbar-item">
-              <a class="button is primary">
-                <span class="icon">
-                  <i class="fas fa-user"></i>
-                </span>
-                <strong>Sign up</strong>
-              </a>
+                <button class="button  is-primary" :class="{ 'is-active': isCartActive }" @click="isCartActive = !isCartActive">
+                    <span class="icon">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="tag is-danger quantity-tag">{{ quantity }}</span>
+                    </span>
+                </button>
             </div>
-
-
+            <LoginBadge />
 
             <div class="navbar-item">
               <div class="field is-grouped">
@@ -108,8 +106,17 @@ import LoginBadge from './LoginBadge.vue';
         </div>
     </div>
       </nav>
+    <Flyout :class="{ 'is-active': isCartActive }">
+        <Cart />
+    </Flyout>
 </template>
 
 
 <style scoped>
+    .quantity-tag {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        border-radius: 1rem;
+    }
 </style>

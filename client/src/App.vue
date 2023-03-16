@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import Cart from './components/Cart.vue';
-import Flyout from './components/Flyout.vue';
 import NavBar from './components/NavBar.vue';
 </script>
 
@@ -13,9 +11,7 @@ import NavBar from './components/NavBar.vue';
         <RouterView />
     </div>
     
-    <Flyout>
-        <Cart />
-    </Flyout>
+    
 </template>
 
 <style scoped>
