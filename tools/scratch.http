@@ -1,0 +1,14 @@
+###
+GET  https://dummyjson.com/docs/products
+
+###
+POST https://dummyjson.com/docs/products/add
+Content-Type: application/json
+
+{
+    "title": "New Product",
+    "price": 100
+}
+
+###
+GET http://localhost:3000/products
