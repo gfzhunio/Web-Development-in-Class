@@ -10,7 +10,7 @@ app
     res.send('Hello World From Express')
 })
 
-.use('products', products)
+.use('/products', products)
 
 app.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
