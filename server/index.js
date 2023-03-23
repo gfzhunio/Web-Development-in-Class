@@ -1,4 +1,5 @@
 const express = require('express')
+cons path = require('path')
 const products = require('./controllers/products')
 const app = express()
 
@@ -15,3 +16,7 @@ app
 app.listen(port, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'))
+})
